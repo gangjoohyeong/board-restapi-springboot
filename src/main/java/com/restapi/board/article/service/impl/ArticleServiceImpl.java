@@ -1,6 +1,6 @@
 package com.restapi.board.article.service.impl;
 
-import com.restapi.board.article.service.articleService;
+import com.restapi.board.article.service.ArticleService;
 import org.springframework.stereotype.Service;
 import com.restapi.board.article.repository.ArticleRepository;
 import com.restapi.board.article.dto.ArticleDTO;
@@ -10,10 +10,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class articleServiceImpl implements articleService {
+public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
 
-    public articleServiceImpl(ArticleRepository articleRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
 

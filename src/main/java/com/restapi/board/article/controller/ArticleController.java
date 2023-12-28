@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import com.restapi.board.article.service.articleService;
+import com.restapi.board.article.service.ArticleService;
 
 import com.restapi.board.article.dto.ArticleDTO;
 import java.util.List;
@@ -13,8 +13,8 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class articleController {
-    private final articleService articleService;
+public class ArticleController {
+    private final ArticleService articleService;
 
     @GetMapping("/api/articles")
     public List<ArticleDTO> getAllArticles() {
