@@ -18,7 +18,7 @@ public class articleController {
     private final articleService articleService;
 
     @GetMapping("/api/articles")
-    public ResponseEntity<List<ArticleDTO>> getAllArticles() {
-        return ResponseEntity.ok(articleService.getAllArticles());
+    public List<ArticleDTO> getAllArticles() {
+        return articleService.getAllArticles();
     }
 }
