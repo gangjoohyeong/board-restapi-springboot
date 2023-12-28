@@ -1,11 +1,8 @@
 package com.restapi.board.article.model;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,4 +24,9 @@ public class Article {
 
     @Column(updatable = false)
     private LocalDateTime createDate = LocalDateTime.now();
+
+    @PrePersist
+    public void onCreate() {
+        this.createDate = LocalDateTime.now();
+    }
 }

@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ArticleService {
     List<ArticleDTO> getAllArticles();
     Optional<ArticleDTO> getArticleById(Long id);
+    ArticleDTO createArticle(ArticleDTO articleDTO);
 }

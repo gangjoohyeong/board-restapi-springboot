@@ -1,5 +1,6 @@
 package com.restapi.board.article.service.impl;
 
+import com.restapi.board.article.model.Article;
 import com.restapi.board.article.service.ArticleService;
 import org.springframework.stereotype.Service;
 import com.restapi.board.article.repository.ArticleRepository;
@@ -29,6 +30,12 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository
                 .findById(id)
                 .map(ArticleDTO::new);
+    }
+
+    public ArticleDTO createArticle(ArticleDTO articleDTO) {
+        Article article = articleDTO.toEntity();
+        Article savedArticle = articleRepository.save(article);
+        return new ArticleDTO(savedArticle);
     }
 
 }

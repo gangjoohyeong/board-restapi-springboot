@@ -23,4 +23,14 @@ public class ArticleDTO {
         this.createDate = article.getCreateDate();
     }
 
+public Article toEntity() {
+        Article article = new Article();
+        article.setId(id);
+        article.setTitle(title);
+        article.setContent(content);
+        article.setCreateDate(createDate);
+        return article;
+    }
+
+
 }
