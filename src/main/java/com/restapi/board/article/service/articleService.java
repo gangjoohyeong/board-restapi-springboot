@@ -1,4 +1,4 @@
-package com.restapi.board.service;
+package com.restapi.board.article.service;
 
 import java.util.Map;
 

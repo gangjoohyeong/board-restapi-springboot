@@ -1,6 +1,6 @@
-package com.restapi.board.service.impl;
+package com.restapi.board.article.service.impl;
 
-import com.restapi.board.service.articleService;
+import com.restapi.board.article.service.articleService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
