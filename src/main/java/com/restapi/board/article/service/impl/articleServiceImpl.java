@@ -2,23 +2,32 @@ package com.restapi.board.article.service.impl;
 
 import com.restapi.board.article.service.articleService;
 import org.springframework.stereotype.Service;
+import com.restapi.board.article.repository.ArticleRepository;
+import com.restapi.board.article.dto.ArticleDTO;
+import com.restapi.board.article.model.Article;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class articleServiceImpl implements articleService {
+    private final ArticleRepository articleRepository;
 
-    @Override
-    public Map<String, Object> getArticleData() {
+    public articleServiceImpl(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
-        Map<String, Object> articleData = new HashMap<>();
+    public List<ArticleDTO> getAllArticles() {
+        return articleRepository.findAll().stream().map(this::convertEntityToDto).collect(Collectors.toList());
+    }
 
-        articleData.put("Key 1", "Dummy Data 1");
-        articleData.put("Key 2", "Dummy Data 2");
-        articleData.put("Key 3", "Dummy Data 3");
-
-        return articleData;
+    private ArticleDTO convertEntityToDto(Article article) {
+        ArticleDTO articleDto = new ArticleDTO();
+        articleDto.setId(article.getId());
+        articleDto.setTitle(article.getTitle());
+        articleDto.setContent(article.getContent());
+        articleDto.setCreateDate(article.getCreateDate());
+        return articleDto;
     }
 
 }
