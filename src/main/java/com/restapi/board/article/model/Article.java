@@ -1,15 +1,11 @@
 package com.restapi.board.article.model;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
-
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-
 
 @Getter
-@Setter
 @Entity
 public class Article {
     @Id
@@ -23,10 +19,23 @@ public class Article {
     private String content;
 
     @Column(updatable = false)
-    private LocalDateTime createDate = LocalDateTime.now();
+    private LocalDateTime createDate;
+
+    @Builder
+    public Article(Long id, String title, String content, LocalDateTime createDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createDate = createDate != null ? createDate : LocalDateTime.now();
+    }
 
     @PrePersist
-    public void onCreate() {
-        this.createDate = LocalDateTime.now();
+    private void onCreate() {
+        if (this.createDate == null) {
+            this.createDate = LocalDateTime.now();
+        }
+    }
+
+    protected Article() {
     }
 }

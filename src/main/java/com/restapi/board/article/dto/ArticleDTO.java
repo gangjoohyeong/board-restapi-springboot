@@ -1,14 +1,13 @@
 package com.restapi.board.article.dto;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import com.restapi.board.article.model.Article;
 
 @Getter
-@Setter
 @NoArgsConstructor
 public class ArticleDTO {
     private Long id;
@@ -23,14 +22,21 @@ public class ArticleDTO {
         this.createDate = article.getCreateDate();
     }
 
-public Article toEntity() {
-        Article article = new Article();
-        article.setId(id);
-        article.setTitle(title);
-        article.setContent(content);
-        article.setCreateDate(createDate);
-        return article;
+    @Builder
+    public ArticleDTO(Long id, String title, String content, LocalDateTime createDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createDate = createDate;
     }
 
 
+    public Article toEntity() {
+        return Article.builder()
+                .id(id)
+                .title(title)
+                .content(content)
+                .createDate(createDate)
+                .build();
+    }
 }
